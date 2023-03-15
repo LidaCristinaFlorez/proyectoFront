@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+
+<div class="row m-0 d-flex justify-content-center flex-wrap">
+<div class="card col-3 m-2" style="width: 18rem; " *ngFor="let item of productos">
+    <img   src="../assets/{{item.imagen}}" class="card-img-top" alt="producto 1" >
+    <div class="card-body">
+      <h5 class="card-title">{{item.descripcion}}</h5>
+      <p class="card-text">{{item.precio}}</p>
+      <a href="#" class="btn btn-primary">Ver</a>
+    </div>
+  </div>
+</div>

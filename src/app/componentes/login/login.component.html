@@ -1,0 +1,42 @@
+
+<div class="container">
+  <div class="row vh-100 justify-content justify-content-center align-items-center">
+    <div class="col-sm-5 bg-light p-5">
+  <form #loginForm="ngForm">
+    <div class="mb-3"> 
+      <h1 class="text-center " >Bienvenido</h1>
+      <h6 class="card-tittle text-center">Ingresa tus datos para continuar</h6>   
+
+      <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" required
+      [(ngModel)]= "email" email
+      [ngModelOptions]="{standalone: true}"
+      aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text"></div>
+      
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" required
+      [(ngModel)]="password"
+      [ngModelOptions]="{standalone: true}">
+     
+      
+    </div>
+
+    <div class="mb-3 form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Acepto términos y condiciones</label>
+    </div>
+    <button type="button" class="btn btn-secondary btn-lg w-100" (click)="login()">Ingresar</button>
+
+    <div class="my-2 text left">
+      <h6 class="card-tittle text-center">¿No tienes cuenta?</h6> 
+      <button class="btn btn-secondary btn-lg w-100" type="button"[routerLink]="['/clientes/registro']">Crea una cuenta</button>
+    </div>
+
+    
+  </form>
+</div>
+</div>
+</div>

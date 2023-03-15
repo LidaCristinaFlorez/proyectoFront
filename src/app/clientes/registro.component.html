@@ -1,0 +1,116 @@
+<ul class="alert alert-danger" *ngIf="errores?.length>0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+</ul>
+
+<div class="container">
+    <div class="row vh-100 justify-content justify-content-center align-items-center">
+      
+        <div class="col-sm-4 bg-light p-5">
+
+          <h1 class="text-center">Registro</h1>
+        <form (ngSubmit) = "create()" #clienteRegistro="ngForm">
+
+          
+
+        <div class="mb-3"> 
+          <label for="tipoDocumento" class= "col-form-label">Tipo Documento</label>
+          <div class="col-sm-12" >
+          <select class="form-control"[(ngModel)]="cliente.tipoDocumento" name="tipoDocumento">
+          <option *ngFor="let tipoDocumento of tipoDocumento" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}</option> 
+           
+          </select>
+          </div>   
+        </div>
+
+        <div class="mb-3"> 
+          <label for="nombre" class= "form-label">Número Documento</label>
+          <div class="col-sm-12" >
+          <input type="text" class="form-control"[(ngModel)]="cliente.numeroDocumento" name="numeroDocumento" #documento="ngModel">
+          <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+            <div *ngIf="documento.errors?.required">
+              El Número de documento es requerido
+            </div>
+          </div>
+
+
+          </div>
+      </div>
+        
+      <div class="mb-3"> 
+        <label for="nombre" class= "form-label">Nombre</label>
+        <div class="col-sm-12" >
+        <input type="text" class="form-control"[(ngModel)]="cliente.nombre" name="nombre" #nombre ="ngModel">
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors?.required">
+            El Nombre es requerido
+          </div>
+        </div>
+        </div>   
+      </div>
+    
+
+      <div class="mb-3"> 
+        <label for="apellido" class="form-label">Apellido</label>
+        <div class="col-sm-12">
+        <input type="text" class="form-control" [(ngModel)]="cliente.apellido" name="apellido" #apellido="ngModel">
+        <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+          <div *ngIf="apellido.errors?.required">
+            El Apellido es requerido
+          </div>
+        </div>
+        </div>   
+      </div>
+      
+      <div class="mb-3"> 
+        <label for="correoElectronico" class="form-label">Correo Electronico</label>
+        <div class="col-sm-12">
+        <input type="text" class="form-control" [(ngModel)]="cliente.correoElectronico" name="correoElectronico" #email="ngModel">
+          <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors?.required">
+              Correo Electronico requerido
+            </div>
+            <div *ngIf="email.errors?.email">
+              Correo Electronico debe tener un formato valido
+            </div>
+          </div>
+
+        </div>   
+      </div>
+
+      <div class="mb-3"> 
+        <label for="password" class="col-sm-2 col-form-label">Contraseña</label>
+        <div class="col-sm-12">
+        <input type="password" class="form-control" [(ngModel)]="cliente.contrasena" name="contrasena" #contrasena="ngModel">
+        <div class="alert alert-danger" *ngIf="contrasena.invalid && (contrasena.dirty || contrasena.touched)">
+          <div *ngIf="contrasena.errors?.required">
+            Contraseña es requerida
+          </div>
+          <div *ngIf="contrasena.errors?.minlength">
+            Contraseña debe tener al menos 5 caracteres
+          </div>
+
+        </div>
+        </div> 
+        
+      </div>
+
+    
+      
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Acepto términos y condiciones</label>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-12">
+      <button class="btn btn-secondary btn-lg w-100" role="button" [disabled]="!clienteRegistro.form">Crear</button>
+     </div>
+      </div>
+      
+    </form>
+  </div>
+  </div>
+  </div>
